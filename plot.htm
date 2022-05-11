@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script type="text/javascript" src="monthlyCollisions.js"></script>
+    <script type="text/javascript" src="dailyCollisions.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable( monthlyCollisions );
+        var data2 = google.visualization.arrayToDataTable( dailyCollisions );
+
+        var options = {
+          title: 'Accidents(avg) per month',
+          chartArea: {left:'10%',top:'10%', width: '65%', height: '65%'}
+        };
+
+        var options2 = {
+          title: 'Worst Time to Drive Through 11207 Area - May',
+          chartArea: {left:'10%',top:'10%', width: '65%', height: '65%'}
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+
+        var chart2 = new google.visualization.LineChart(document.getElementById('chart_div2'));
+        chart2.draw(data2, options2);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 1300px; height: 600px;"></div>
+    <div id="chart_div2" style="width: 1300px; height: 600px;"></div>
+  </body>
+</html>
